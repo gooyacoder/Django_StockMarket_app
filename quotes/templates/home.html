@@ -8,6 +8,15 @@
 
 <br>
 
-{{ api }}
+{% for key, value in api.items %}
+
+	{{ key }}:<br>
+	{% for key_2, value_2 in value.items %}
+
+	{{ key_2 }}: {{ value_2 }} <br>
+
+	{% endfor %}
+
+{% endfor %}
 
 {% endblock %}
