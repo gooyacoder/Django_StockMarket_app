@@ -4,19 +4,16 @@
 
 {% block content %}
 
-<h1>Hello World!</h1>
+<h1>{{api.name}}</h1><br>
 
-<br>
+Market Cap : ${{api.marketCap}}<br>
+Price : ${{api.price}}<br>
+Changes Percentage : {{api.changesPercentage}}<br>
+Day Low : ${{api.dayLow}}<br>
+Day High : ${{api.dayHigh}}<br>
+Volume : {{api.volume}}<br>
+EPS : {{api.eps}}<br>
+PE : {{api.pe}}<br>
 
-{% for key, value in api.items %}
-
-	{{ key }}:<br>
-	{% for key_2, value_2 in value.items %}
-
-	{{ key_2 }}: {{ value_2 }} <br>
-
-	{% endfor %}
-
-{% endfor %}
 
 {% endblock %}
