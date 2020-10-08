@@ -4,16 +4,72 @@
 
 {% block content %}
 
-<h1>{{api.name}}</h1><br>
 
-Market Cap : ${{api.marketCap}}<br>
-Price : ${{api.price}}<br>
-Changes Percentage : {{api.changesPercentage}}<br>
-Day Low : ${{api.dayLow}}<br>
-Day High : ${{api.dayHigh}}<br>
-Volume : {{api.volume}}<br>
-EPS : {{api.eps}}<br>
-PE : {{api.pe}}<br>
+{% if ticker %}
 
+	<h5>{{ ticker }}</h5>
+
+{% endif %}
+
+
+{% if api %}
+
+	{% if api == 'Error' %}
+		<h5>The ticker you entered was not available, please try again and check your spelling.</h5>
+	{% else %}
+		<h1>{{api.name}}</h1><br>
+
+		<div class="col-sm-7">
+
+			<table class="table">
+	  
+			  <tbody>
+			    <tr>
+			      <!-- <th scope="row">1</th> -->
+			      <td>Market Cap</td>
+			      <td>${{api.marketCap}}</td>
+			    </tr>
+			    <tr>
+			      <!-- <th scope="row">1</th> -->
+			      <td>Price</td>
+			      <td>${{api.price}}</td>
+			    </tr>
+			    <tr>
+			      <!-- <th scope="row">1</th> -->
+			      <td>Changes Percentage</td>
+			      <td>{{api.changesPercentage}}</td>
+			    </tr>
+			    <tr>
+			      <!-- <th scope="row">1</th> -->
+			      <td>Day Low</td>
+			      <td>${{api.dayLow}}</td>
+			    </tr>
+			    <tr>
+			      <!-- <th scope="row">1</th> -->
+			      <td>Day High</td>
+			      <td>${{api.dayHigh}}</td>
+			    </tr>
+			    <tr>
+			      <!-- <th scope="row">1</th> -->
+			      <td>Volume</td>
+			      <td>{{api.volume}}</td>
+			    </tr>
+			    <tr>
+			      <!-- <th scope="row">1</th> -->
+			      <td>EPS</td>
+			      <td>${{api.eps}}</td>
+			    </tr>
+			    <tr>
+			      <!-- <th scope="row">1</th> -->
+			      <td>PE</td>
+			      <td>${{api.pe}}</td>
+			    </tr>
+			  </tbody>
+			</table>
+		</div>
+
+	{% endif %}
+
+{% endif %}
 
 {% endblock %}
