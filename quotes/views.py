@@ -35,6 +35,8 @@ def about(request):
 	return render(request, "about.html", {})
 
 def add_stock(request):
+	import json
+	import requests
 	if request.method == 'POST':
 		form = StockForm(request.POST or None)
 		if form.is_valid():
@@ -43,7 +45,15 @@ def add_stock(request):
 			return redirect('add_stock')
 	else:
 		tickers = Stock.objects.all()
-		return render(request, "add_stock.html", {'tickers' : tickers})
+		output = []
+		for ticker in tickers:
+			try:
+				cq_request = requests.get('https://financialmodelingprep.com/api/v3/quote/' + str(ticker) + '?apikey=e759076faa64ada2e1d120b9fdd68771')
+				api = json.loads(cq_request.content)
+				output.append(api)
+			except Exception as e:
+				api = 'Error'
+		return render(request, "add_stock.html", {'tickers' : tickers, 'output' : output})
 
 def delete(request, stock_id):
 	item = Stock.objects.get(pk=stock_id)
