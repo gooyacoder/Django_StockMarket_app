@@ -43,5 +43,21 @@
   </tbody>
 </table>
 
+<br><br>
+
+{% for list_item in output %}
+
+	{{list_item.name}}<br>
+	{{list_item.marketCap}}<br>
+	{{list_item.price}}<br>
+	{{list_item.changesPercentage}}<br>
+	{{list_item.dayLow}}<br>
+	{{list_item.dayHigh}}<br>
+	{{list_item.volume}}<br>
+	{{list_item.eps}}<br>
+	{{list_item.pe}}<br><br>
+
+{% endfor %}
+
 
 {% endblock %}

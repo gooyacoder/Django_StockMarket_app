@@ -50,7 +50,7 @@ def add_stock(request):
 			try:
 				cq_request = requests.get('https://financialmodelingprep.com/api/v3/quote/' + str(ticker) + '?apikey=e759076faa64ada2e1d120b9fdd68771')
 				api = json.loads(cq_request.content)
-				output.append(api)
+				output.append(api[0])
 			except Exception as e:
 				api = 'Error'
 		return render(request, "add_stock.html", {'tickers' : tickers, 'output' : output})
