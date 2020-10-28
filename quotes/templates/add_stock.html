@@ -27,24 +27,23 @@
     </tr>
   </thead>
   <tbody>
-  	{% for item in tickers %}
+  	{% for item in output %}
 	    <tr class="text-center">
-	      <th scope="row">{{ item }}</th>
-	      <td>Mark</td>
-	      <td>Mark</td>
-	      <td>Otto</td>
-	      <td>@mdo</td>
-	      <td>Otto</td>
-	      <td>@mdo</td>
-	      <td><a href="{% url 'delete' item.id %}">Delete</a></td>
+		<th scope="row">{{ item.ticker }}</th>
+		<td>{{item.name}}</td>
+		<td>${{item.marketCap}}</td>
+		<td>${{item.price}}</td>
+		<td>{{item.changesPercentage}}%</td>
+		<td>{{item.eps}}</td>
+		<td>{{item.pe}}</td>
+		<td><a href="{% url 'delete' item.id %}">Delete</a></td>
 	    </tr>
     {% endfor %}
-
   </tbody>
 </table>
 
 <br><br>
-
+<!-- 
 {% for list_item in output %}
 
 	{{list_item.name}}<br>
@@ -57,7 +56,7 @@
 	{{list_item.eps}}<br>
 	{{list_item.pe}}<br><br>
 
-{% endfor %}
+{% endfor %} -->
 
 
 {% endblock %}
